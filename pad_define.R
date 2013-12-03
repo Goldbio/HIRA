@@ -52,3 +52,5 @@ diseaseFirstOccur= function( data, disease){
 	pad[which( MAIN_SICK==disease | SUB_SICK==disease), sort(date)[1], by=NO]
 
 }
+
+
