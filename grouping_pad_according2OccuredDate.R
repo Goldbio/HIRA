@@ -20,8 +20,15 @@ dt= merge( dt, FD, by='NO', all=TRUE )
 dt[ date >= first_date ] 
 
 
+# 최초 발생일 이전과 이후 기준 평균 1인당 의료비 
+dt[  , sum( as.numeric( DMD_TRAMT))/ length( unique(NO)) , by=(date>=first_date) ]
+
+# 최초 발생일 이전 이후 기준 평균 1인당 의료비 ( 입원 / 외래구분 )
+dt[  , sum( as.numeric( DMD_TRAMT))/ length( unique(NO)) , by=list(date>=first_date, dif) ]
 
 
+# 위와 같고 1인 평균 환자 의료이용일수  (입원 / 외래 구분 )
+dt[  , sum( as.numeric( VSCN ) )/ length( unique(NO)) , by=(date>=first_date, dif) ]
 
 
 
